@@ -8,9 +8,9 @@ class App(object):
         self.keys = defaultdict(bool)
         self.change = False
         self.root = tk.Tk()
-        self.root.geometry('300x200')
-        self.text = tk.Text(self.root, background='black', foreground='white', state='disabled')
-        self.text.pack()
+        self.root.geometry('200x800')
+        self.text = tk.Text(self.root, state='disabled', font='System 14 bold')
+        self.text.pack(expand=True, fill='both')
         self.root.bind('<KeyPress>', self.onKeyPress)
         self.root.bind('<KeyRelease>', self.onKeyRelease)
         self.poll()
@@ -35,8 +35,8 @@ class App(object):
             self.text.see(tk.END)
             self.change = False
 
+        self.keys['n'] = False
         self.keys['h'] = False
-        self.keys['y'] = False
         self.keys['u'] = False
         self.keys['i'] = False
         self.keys['k'] = False
@@ -72,9 +72,9 @@ class App(object):
         if x == 1 and y == 1:
             cmd = u'\u2198'
 
-        if self.keys['h']:
+        if self.keys['n']:
             cmd += 'P'
-        if self.keys['y']:
+        if self.keys['h']:
             cmd += 'K'
         if self.keys['u']:
             cmd += 'S'
